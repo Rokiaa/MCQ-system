@@ -1,7 +1,7 @@
 <?php  include "includes/db.php"; ?>
 <?php  //include "includes/header.php"; ?>
 <?php include "admin/functions.php"; ?>
-<?php // include "index.php"; ?>
+<?php // include ""; ?>
 <?php
    $query = "SELECT * FROM questions";
    $select_questions= mysqli_query($connection,$query);

@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") //isset($_POST['register']) //another w
        $error['email']= 'Email cannot be empty';
    }
    if(email_exists($email)){
-       $error['email']= 'Email already exists, <a href="index.php">Please Login </a>';
+       $error['email']= 'Email already exists, <a href="login.php">Please Login </a>';
    }
    if($password == '')
    {

@@ -3,7 +3,7 @@
 <?php include "admin/functions.php"; ?> 
 
 <?php 
-    // checkIfUserIsLoggedInAndRedirect('admin/admin.php');
+
      if(ifItIsMethod('post')){
          if(isset($_POST['username']) && isset($_POST['password'])){
              login_user($_POST['username'], $_POST['password']);

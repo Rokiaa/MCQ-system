@@ -16,9 +16,17 @@ function ifItIsMethod($method=null){
 
 function isLoggedIn(){
     if(isset($_SESSION['user_role'])){
-        return true;
+        if($_SESSION['user_role']== 'admin')
+        {
+            redirect('admin/admin.php');
+        }
+        else 
+        {
+            redirect('Test/mcq.php');
+        }
+       
     }
-    return false;
+    redirect('login.php');
 }
 function query($query){
     global $connection;
@@ -35,13 +43,9 @@ function fetchRecords($result){
 function is_admin()
 {
     global $connection;
-    if(isLoggedIn()){
+    if(isset($_SESSION['user_role'])){
         $result = query("SELECT user_role FROM users WHERE user_id=".$_SESSION['user_id']."");
-        // $result =mysqli_query($connection, $query);
-        // confirmQuery($result);
        $row = fetchRecords($result);
-       //var_dump($username);
-      // var_dump($row); 
         if(! empty($row) && is_array($row) && isset($row['user_role']) && $row['user_role']== 'admin')
         {
             return true;
@@ -88,12 +92,10 @@ function login_user($username,$password){
        if($db_user_role == 'admin') {
         redirect("/MCQ/admin/admin.php");
        }
-       else {
-        redirect("/MCQ/index.php");
+       else  {
+        redirect("/MCQ/Test/mcq.php");
 
-       }
-        
-
+       } 
     }
     else{
         false;
@@ -253,3 +255,6 @@ function recordCount($table){
     confirmQuery($result);
     return $result;
 }
+
+
+
